@@ -25,7 +25,7 @@ export default {
             requiresAuth: true,
             title: '创建资源'
           },
-          component: resolve => require.ensure([], () => resolve(require('@/views/resource/create/index.vue')), 'resource')
+          component: resolve => require.ensure([], () => resolve(require('@/views/resource/operation/create/index.vue')), 'resource')
         },
         {
           path: 'update',
@@ -53,6 +53,25 @@ export default {
         title: '资源详情'
       },
       component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+    },
+    {
+      path: 'policy',
+      meta: {
+        requiresAuth: true,
+        title: '资源策略管理'
+      },
+      component: Container,
+      children: [
+        {
+          path: 'create',
+          meta: {
+            requiresAuth: true,
+            title: '创建策略'
+          },
+          component: resolve => require.ensure([], () => resolve(require('@/views/resource/policy/create/index.vue')), 'resource')
+        },
+
+      ]
     },
   ]
 }
