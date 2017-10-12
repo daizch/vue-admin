@@ -16,7 +16,7 @@ export default {
   }),
 
   created () {
-    this.$store.dispatch('getCurrentUser')
+    // this.$store.dispatch('getCurrentUser')
     this.resolveRouter();
   },
 

@@ -4,6 +4,9 @@ module.exports = app => {
     const nodeRole = app.role.can('node');
     const resourceRole = app.role.can('resource');
 
+    app.resources('v1', '/v1/*', app.controller.proxy);
+
+
     app.get('/node', nodeRole, 'node.index');
     app.get('/resource', resourceRole, 'resource.index');
 

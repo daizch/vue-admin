@@ -7,7 +7,7 @@ import axios from 'axios'
 import store from '@/store'
 
 const instance = axios.create({
-  baseURL: '//freelog.com/api/',
+  baseURL: '//api.freelog.com/',
   timeout: 3000,
   headers: {
     'X-Requested-With': 'XMLHttpRequest'

@@ -6,7 +6,8 @@ module.exports = appInfo => {
     config.security = {
         csrf: {
             enable: false,
-        }
+        },
+        domainWhiteList: ['http://api.freelog.com']
     };
 
     config.mysql = {
@@ -19,6 +20,8 @@ module.exports = appInfo => {
         //     database: 'db_freelog',
         // }
     };
+
+
 
     return config;
 };

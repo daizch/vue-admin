@@ -9,3 +9,4 @@ export default Vue => {
     $axios: { get: () => axios }
   })
 }
+
