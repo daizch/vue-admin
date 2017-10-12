@@ -89,5 +89,24 @@ export default {
       },
       component: resourceDetail
     },
+    {
+      path: 'policy',
+      meta: {
+        requiresAuth: true,
+        title: '资源策略管理'
+      },
+      component: Container,
+      children: [
+        {
+          path: 'create',
+          meta: {
+            requiresAuth: true,
+            title: '创建策略'
+          },
+          component: resolve => require.ensure([], () => resolve(require('@/views/resource/policy/create/index.vue')), 'resource')
+        },
+
+      ]
+    },
   ]
 }
