@@ -39,6 +39,33 @@ export default {
       ]
     },
     {
+      path: 'policy',
+      meta: {
+        requiresAuth: true,
+        title: '资源策略操作'
+      },
+      component: Container,
+      children: [
+        {
+          path: 'create',
+          meta: {
+            requiresAuth: true,
+            title: '创建资源策略'
+          },
+          component: resolve => require.ensure([], () => resolve(require('@/views/resource/policy/create/index.vue')), 'resource')
+        },
+        {
+          path: 'update',
+          hidden: true,
+          meta: {
+            requiresAuth: true,
+            title: '更新资源'
+          },
+          component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+        }
+      ]
+    },
+    {
       path: 'list',
       meta: {
         requiresAuth: true,

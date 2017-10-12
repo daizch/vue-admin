@@ -3,7 +3,8 @@ import {storage} from '@/lib'
 
 const types = {
   GET_CURRENT_USER: 'getCurrentUser',
-  CHANGE_SESSION: 'changeSession'
+  CHANGE_SESSION: 'changeSession',
+  USER_LOGIN: 'userLogin'
 }
 
 const user = {
@@ -25,6 +26,19 @@ const user = {
         .then(res => {
           commit(types.CHANGE_SESSION, {user: res.data});
           return res.data
+        })
+    },
+    [types.USER_LOGIN]({commit}, data) {
+      return UserService.get({
+        params: data
+      })
+        .then(res => {
+          if (res.data.ret === 0) {
+            commit(types.CHANGE_SESSION, {user: res.data.data});
+            return res.data.data
+          } else {
+            return Promise.reject('登录失败');
+          }
         })
     }
   }

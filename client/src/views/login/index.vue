@@ -8,11 +8,11 @@
     </header>
     <el-form class="login-form" auto-complete="off" :model="model" :rules="rules" ref="loginForm" label-width="80px">
       <h2 class="heading">用户登录</h2>
-      <el-form-item label="用户名" prop="username">
-        <el-input type="text" v-model="model.username" placeholder="请输入用户名"/>
+      <el-form-item label="用户名" prop="userName">
+        <el-input type="text" v-model="model.userName" placeholder="请输入用户名"/>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="model.password" placeholder="请输入密码"/>
+      <el-form-item label="密码" prop="passWord">
+        <el-input type="password" v-model="model.passWord" placeholder="请输入密码"/>
       </el-form-item>
       <el-form-item>
         <el-checkbox v-model="checked">记住密码</el-checkbox>

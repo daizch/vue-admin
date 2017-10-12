@@ -4,28 +4,56 @@ export default {
   name: 'resource-creator',
   data() {
     return {
-      resourceType:'',
       options: [
         {value: 'widget', label: 'widget'},
-        {value: 'file', label: 'file'}
+        {value: 'MarkDown', label: 'markdown'},
+        {value: 'Image', label: 'image'},
+        {value: 'PageBuild', label: 'page build'},
+        {value: 'Widget', label: 'widget'},
+        {value: 'Audio', label: 'audio'},
+        {value: 'Video', label: 'video'}
       ],
-      headers: {}
+      uploader: {
+        headers: {
+          method: 'POST'
+        },
+        data: {
+          resourceType: '',
+          meta: {}
+        }
+      }
     }
   },
   computed: mapGetters({
     session: 'session'
   }),
-  mounted(){
-    this.headers.Authorization =  `Bearer ${this.session.token}`
+  mounted() {
+    // this.uploader.headers.Authorization = `Bearer ${this.session.token}`
   },
   methods: {
-    errorHandler(err, file){
-      switch (err.status){
+    errorHandler(err, file) {
+      switch (err.status) {
         case 400:
-          this.$message.error('不支持的文件类型');break;
+          this.$message.error('不支持的文件类型');
+          break;
         case 401:
-          this.$message.error('权限未经验证');break;
+          this.$message.error('权限未经验证');
+          break;
       }
+    },
+    successHandler(res, file) {
+      if (res.ret != 0) {
+        this.$message.error(res.msg);
+      } else {
+        this.$message.success('资源创建成功');
+        setTimeout(() => {
+          this.$router.push({path: '/resource/policy/create', query: {resourceId: res.data.resourceId}})
+        }, 5e2)
+      }
+    },
+    submitUpload() {
+      this.uploader.data.meta = JSON.stringify(this.uploader.data.meta)
+      this.$refs.upload.submit();
     }
   }
 }

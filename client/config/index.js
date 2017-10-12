@@ -28,6 +28,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/v1': {
+        changeOrigin: true,
+        target: 'http://192.168.0.3:1201'
+      },
       freelog: {
         filter: '/api/**',
         target: 'http://localhost:7001'

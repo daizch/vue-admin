@@ -5,17 +5,17 @@ export default {
 
   data() {
     const model = storage.get('accountInfo') || {
-      username: 'daizch',
-      password: '123456'
+      userName: 'yuliang',
+      passWord: '123456'
     };
 
     // form validate rules
     const rules = {
-      username: [
+      userName: [
         {required: true, message: '请输入用户名'},
         {min: 6, max: 16, message: '长度在 6 到 16 个字符'}
       ],
-      password: [
+      passWord: [
         {required: true, message: '请输入密码'},
         {min: 6, max: 16, message: '长度在 6 到 16 个字符'}
       ]
@@ -47,7 +47,7 @@ export default {
         this.error = null
         this.loading = true
 
-        this.$store.dispatch('createToken', this.model)
+        this.$store.dispatch('userLogin', this.model)
           .then(token => {
             this.$router.replace({path: this.$route.query.redirect || '/'})
             this.loading = false

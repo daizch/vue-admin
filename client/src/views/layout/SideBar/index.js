@@ -40,6 +40,7 @@ export default {
 
       if (navList) {
         this.navList = navList;
+        this.$store.dispatch('openSidebar')
       } else {
         this.navList = [];
         this.$store.dispatch('closeSidebar') //hidesidebar?

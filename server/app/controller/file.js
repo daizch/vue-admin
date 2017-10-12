@@ -11,6 +11,7 @@ module.exports = app => {
         *create() {
             const {ctx} = this;
             const stream = yield ctx.getFileStream();
+            console.log(stream.fields)
             let filename = md5(Date.now()+stream.filename)
             let extname = path.extname(stream.filename)
             let filePath =  path.join(RESOURCE_CONFIG.path, stream.mime, `${filename}${extname}`);
