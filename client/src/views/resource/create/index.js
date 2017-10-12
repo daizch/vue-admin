@@ -28,7 +28,6 @@ export default {
     session: 'session'
   }),
   mounted() {
-    // this.uploader.headers.Authorization = `Bearer ${this.session.token}`
   },
   methods: {
     errorHandler(err, file) {

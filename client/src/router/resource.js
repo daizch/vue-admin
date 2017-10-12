@@ -1,5 +1,13 @@
-const Layout = ()=>import('@/views/layout/layout.vue')
 import Container from 'views/layout/container.vue'
+
+import {
+  resourceCreator,
+  resourceUpdator,
+  resourcePolicyCreator,
+  resourcePolicyUpdator,
+  resourceList,
+  resourceDetail
+} from '@/views'
 
 export default {
   name: 'resource',
@@ -25,7 +33,7 @@ export default {
             requiresAuth: true,
             title: '创建资源'
           },
-          component: resolve => require.ensure([], () => resolve(require('@/views/resource/create/index.vue')), 'resource')
+          component: resourceCreator
         },
         {
           path: 'update',
@@ -34,7 +42,7 @@ export default {
             requiresAuth: true,
             title: '更新资源'
           },
-          component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+          component: resourceUpdator
         }
       ]
     },
@@ -52,7 +60,7 @@ export default {
             requiresAuth: true,
             title: '创建资源策略'
           },
-          component: resolve => require.ensure([], () => resolve(require('@/views/resource/policy/create/index.vue')), 'resource')
+          component: resourcePolicyCreator
         },
         {
           path: 'update',
@@ -61,7 +69,7 @@ export default {
             requiresAuth: true,
             title: '更新资源'
           },
-          component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+          component: resourcePolicyUpdator
         }
       ]
     },
@@ -71,7 +79,7 @@ export default {
         requiresAuth: true,
         title: '资源列表'
       },
-      component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+      component: resourceList
     },
     {
       path: 'detail',
@@ -79,7 +87,7 @@ export default {
         requiresAuth: true,
         title: '资源详情'
       },
-      component: resolve => require.ensure([], () => resolve(require('../views/main/index')), 'dashboard')
+      component: resourceDetail
     },
   ]
 }
